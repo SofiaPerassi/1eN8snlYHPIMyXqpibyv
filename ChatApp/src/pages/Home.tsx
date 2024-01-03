@@ -12,7 +12,7 @@ function Home() {
         <Title/>
       </div>
       <div className='flex mt-16'>
-        <div className='bg-indigo-400 w-1/3 h-screen fixed'>
+        <div className='bg-orange-400 w-1/3 h-screen fixed'>
           <NavBar />
         </div>
         {currentUser && 

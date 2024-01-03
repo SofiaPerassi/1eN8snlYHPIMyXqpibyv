@@ -26,8 +26,6 @@ function ChatList() {
 
             querySnapshot.forEach((doc) => {
                 const chatData = doc.data();
-                console.log(doc.data())
-                // const otherUserId = chatData.userInfo.uid;
 
                 if (currentId && (currentId === chatData.userInfo.uid)) {
                     chatsData.push({ chatData: {userInfo: chatData.userInfo} });
@@ -50,7 +48,6 @@ function ChatList() {
 
   const handleSelect = async (id: string) => {
   if(currentId && id) {
-    console.log('Entra en el if')
       const bothIds = currentId > id ? currentId + id : id + currentId;
 
       localStorage.setItem('bothIds', bothIds);
@@ -58,8 +55,6 @@ function ChatList() {
       setCurrentUser(bothIds)
     }
   };
-
-  console.log(Object.entries(chats), 'estos son los chats')
 
   return (
     <div>

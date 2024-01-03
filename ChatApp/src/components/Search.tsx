@@ -28,7 +28,6 @@ function Search() {
       });
 
      setUsers(userList);
-     console.log(userList)
     };
 
     fetchUsers();
@@ -88,7 +87,6 @@ function Search() {
                 [bothIds + '.date']: serverTimestamp(),
               }, { merge: true });
 
-              console.log('Chat created successfully!',bothIds);
             } catch (error) {
               console.error('Error creating chat:', error);
             }

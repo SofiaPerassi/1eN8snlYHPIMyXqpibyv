@@ -10,7 +10,6 @@ function Login() {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result)
       if (result.user.displayName && result.user.email && result.user.uid) {
         localStorage.setItem('user', result.user.displayName);
         localStorage.setItem('email', result.user.email);
@@ -35,11 +34,11 @@ function Login() {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="bg-indigo-200 p-8 shadow-lg rounded-md justify-center">
+      <div className="bg-orange-200 p-8 shadow-lg rounded-md justify-center">
         <h2 className="text-2xl font-semibold mb-6">Sign in with Google</h2>
         <button
           onClick={signInWithGoogle}
-          className="bg-indigo-500 text-white p-2 rounded-md hover:bg-indigo-600 transition"
+          className="bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 transition"
         >
           Sign In with Google
         </button>

@@ -44,13 +44,13 @@ function CreateMessage() {
 
   return (
     <div className="w-11/12">
-        <form onSubmit={handleSubmit} className="flex border-2 border-indigo-300 rounded-lg w-full justify-between bg-indigo-200">
+        <form onSubmit={handleSubmit} className="flex border-2 border-orange-300 rounded-lg w-full justify-between bg-orange-200">
             <input type="text" value={message} 
-            className="bg-indigo-200 block my-2 w-full px-2 focus:outline-none" 
+            className="bg-orange-200 block my-2 w-full px-2 focus:outline-none" 
             onChange={(e) => setMessage(e.target.value)}
             placeholder="New message"/>
             <button type="submit" className="pr-2">
-                <svg className="h-8 w-8 text-indigo-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  
+                <svg className="h-8 w-8 text-orange-500"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  
                     <circle cx="12" cy="12" r="10" />  
                     <polyline points="12 16 16 12 12 8" />  
                     <line x1="8" y1="12" x2="16" y2="12" />
