@@ -35,13 +35,15 @@ function Login() {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="bg-orange-200 p-8 shadow-lg rounded-md justify-center">
-        <h2 className="text-2xl font-semibold mb-6">Sign in with Google</h2>
-        <button
-          onClick={signInWithGoogle}
-          className="bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 transition"
-        >
-          Sign In with Google
-        </button>
+        <h2 className="text-2xl font-semibold mb-6">Sign in with Google to use FireMessage</h2>
+        <div className='flex justify-center items-center'>
+          <button
+            onClick={signInWithGoogle}
+            className="bg-orange-500 text-white p-2 rounded-md hover:bg-orange-600 transition justify-center"
+          >
+            Sign In
+          </button>
+        </div>
       </div>
     </div>
 

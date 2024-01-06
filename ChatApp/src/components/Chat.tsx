@@ -17,7 +17,8 @@ function Chat(user: User) {
                 <h2 className="text-lg text-orange-700 font-semibold">
                     {info.otherUser}
                 </h2>
-                <p>{info.text}</p>
+                {/* Esta linea imprime el ultimo mensaje enviado por el usuario del chat */}
+                {/* <p>{info.text}</p> */}
             </div>
           )
     }

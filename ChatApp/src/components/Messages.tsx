@@ -14,52 +14,58 @@ function Messages() {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                if (!bothIds) {
-                    console.error('No user ID found');
-                    setMessages(null);
-                    setLoading(false);
-                    return;
-                }
-
-                const chatsCollection = collection(db, 'chats', bothIds, 'messages');
-                const q = query(chatsCollection, orderBy('createdAt', 'asc'), limit(50));
-
-                const unsubscribe = onSnapshot(q, (snapshot) => {
-                    setMessages(snapshot.docs.map(doc => (doc.data())));
-                    setLoading(false);
-                }, (error) => {
-                    console.error('Error fetching messages:', error);
-                    setMessages(null);
-                    setLoading(false);
-                    setError(error);
-                });
-
-                return () => unsubscribe();
-            } catch (error:unknown) {
-                console.error('Error fetching messages:', error);
-                setMessages([]);
-                setLoading(false);
-                setError(error as FirestoreError);
-            }
-        };
-
-        const scrollContainer = scrollContainerRef.current;
-
-        fetchData();
-
-        const scrollToBottom = () => {
-          if (scrollContainer) {
-              scrollContainer.scrollTo(0, scrollContainer.scrollHeight);
+      const fetchData = async () => {
+        try {
+          if (!bothIds) {
+            console.error('No user ID found');
+            setMessages(null);
+            setLoading(false);
+            return;
           }
-        };
-
-        const scrollTimeout = setTimeout(scrollToBottom, 100);
-
-        return () => clearTimeout(scrollTimeout);
-
+  
+          const chatsCollection = collection(db, 'chats', bothIds, 'messages');
+          const q = query(chatsCollection, orderBy('createdAt', 'asc'), limit(50));
+  
+          const unsubscribe = onSnapshot(q, (snapshot) => {
+            setMessages(snapshot.docs.map(doc => (doc.data())));
+            setLoading(false);
+          }, (error) => {
+            console.error('Error fetching messages:', error);
+            setMessages(null);
+            setLoading(false);
+            setError(error);
+          });
+  
+          return () => unsubscribe();
+        } catch (error: unknown) {
+          console.error('Error fetching messages:', error);
+          setMessages([]);
+          setLoading(false);
+          setError(error as FirestoreError);
+        }
+      };
+  
+      fetchData();
+  
     }, [bothIds, db]);
+  
+    useEffect(() => {
+      const scrollContainer = scrollContainerRef.current;
+  
+      const scrollToBottom = () => {
+        if (scrollContainer) {
+          const isScrolledToBottom =
+            scrollContainer.scrollHeight - scrollContainer.clientHeight <=
+            scrollContainer.scrollTop + 1;
+  
+          if (!isScrolledToBottom) {
+            scrollContainer.scrollTop = scrollContainer.scrollHeight;
+          }
+        }
+      };
+  
+      scrollToBottom();
+    }, [messages]);
 
     if (loading) {
         return <p>Loading...</p>;
