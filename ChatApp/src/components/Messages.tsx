@@ -88,48 +88,46 @@ function Messages() {
   };
     
     return (
-        // <div> 
-          <div className="grid gap-2 overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300" ref={scrollContainerRef}>
-            {messages?.map(({ message, user }) => (
-                <div
-                key={generateRandomString(8)}
-                className={`flex ${user === currentUser ? 'justify-end' : 'justify-start'}`}
-                >
-                {user != currentUser && (<div className='flex items-center justify-center w-10 h-10 rounded-full bg-orange-300'>
-                  <h1 className='text-orange-800 font-bold text-xl'>
-                    {user ? user.charAt(0).toUpperCase() : ''}
-                  </h1>
-                </div>)}
-                <div
-                  className={`p-4 max-w-screen-sm w-screen sm:w-[33.333333%] mx-2 my-2 ${
-                    user === currentUser ? 'bg-yellow-600 rounded-br-lg rounded-tl-lg rounded-bl-lg text-white' : 'bg-orange-300 rounded-bl-lg  rounded-br-lg rounded-tr-lg'
-                  } relative`}
-                >
-                  <p>{message}</p>
-                  {currentUser && (
-                    <div
-                      className={`absolute right-0 bottom-0 w-0 h-0 border-solid border-transparent border-b-4 border-r-4 ${
-                        user === currentUser ? 'border-yellow-600 border-t' : 'border-orange-300 border-l'
-                      }`}
-                    ></div>
-                  )}
-                  {!currentUser && (
-                    <div
-                      className={`absolute left-0 bottom-0 w-0 h-0 border-solid border-transparent border-b-4 border-l-4 ${
-                        user === currentUser ? 'border-orange-300 border-r' : 'border-yellow-600 border-t'
-                      }`}
-                    ></div>
-                  )}
-                </div>
-                {user === currentUser && (<div className='flex items-center justify-center w-10 h-10 rounded-full bg-yellow-600 text-white'>
-                  <h1 className='text-amber-800 font-bold text-xl'>
-                    {user ? user.charAt(0).toUpperCase() : ''}
-                  </h1>
-                </div>)}
+        <div className="grid gap-2 overflow-y-auto max-h-[400px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300" ref={scrollContainerRef}>
+          {messages?.map(({ message, user }) => (
+              <div
+              key={generateRandomString(8)}
+              className={`flex ${user === currentUser ? 'justify-end' : 'justify-start'}`}
+              >
+              {user != currentUser && (<div className='flex items-center justify-center w-10 h-10 rounded-full bg-orange-300'>
+                <h1 className='text-orange-800 font-bold text-xl'>
+                  {user ? user.charAt(0).toUpperCase() : ''}
+                </h1>
+              </div>)}
+              <div
+                className={`p-4 max-w-screen-sm w-screen sm:w-[33.333333%] mx-2 my-2 ${
+                  user === currentUser ? 'bg-yellow-600 rounded-br-lg rounded-tl-lg rounded-bl-lg text-white' : 'bg-orange-300 rounded-bl-lg  rounded-br-lg rounded-tr-lg'
+                } relative`}
+              >
+                <p>{message}</p>
+                {currentUser && (
+                  <div
+                    className={`absolute right-0 bottom-0 w-0 h-0 border-solid border-transparent border-b-4 border-r-4 ${
+                      user === currentUser ? 'border-yellow-600 border-t' : 'border-orange-300 border-l'
+                    }`}
+                  ></div>
+                )}
+                {!currentUser && (
+                  <div
+                    className={`absolute left-0 bottom-0 w-0 h-0 border-solid border-transparent border-b-4 border-l-4 ${
+                      user === currentUser ? 'border-orange-300 border-r' : 'border-yellow-600 border-t'
+                    }`}
+                  ></div>
+                )}
               </div>
-            ))}
-          </div>
-
+              {user === currentUser && (<div className='flex items-center justify-center w-10 h-10 rounded-full bg-yellow-600 text-white'>
+                <h1 className='text-amber-800 font-bold text-xl'>
+                  {user ? user.charAt(0).toUpperCase() : ''}
+                </h1>
+              </div>)}
+            </div>
+          ))}
+        </div>
     );
 }
 
